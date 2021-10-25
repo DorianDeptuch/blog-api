@@ -1,11 +1,37 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html>
+<%- include('./partials/head') %>
+<%- include('./partials/header') %>
+<div class="jumbotron jumbotron-fluid mt-5">
+  <img class="img-fluid" src="https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="banner img">
+  <div class="container my-5">
+    <section class="row">
+      <h1 class="text-center py-2">Recent Blog Posts</h1>
+      <div class="card col mx-2 p-0 shadow" style="width: 18rem;">
+        <img src="https://ychef.files.bbci.co.uk/976x549/p07n19vr.jpg" class="card-img-top" alt="Card img">
+        <div class="card-body">
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <button class="btn btn-primary">Read More >></button>
+        </div>
+      </div>
+      <div class="card col mx-2 p-0 shadow" style="width: 18rem;">
+        <img src="https://ychef.files.bbci.co.uk/976x549/p07n19vr.jpg" class="card-img-top" alt="Card img">
+        <div class="card-body">
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <button class="btn btn-primary">Read More >></button>
+
+        </div>
+      </div>
+      <div class="card col mx-2 p-0 shadow" style="width: 18rem;">
+        <img src="https://ychef.files.bbci.co.uk/976x549/p07n19vr.jpg" class="card-img-top" alt="Card img">
+        <div class="card-body">
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <button class="btn btn-primary">Read More >></button>
+        </div>
+      </div>
+      <div class="">
+        <a class="text-center py-2 mb-5" href="/posts">See all posts >></a>
+      </div>
+    </section>
+  </div>
+</div>
+<%- include('./partials/footer') %>
+  

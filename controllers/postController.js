@@ -3,7 +3,7 @@ const db = process.env.MONGO_URI;
 const Post = require("../models/post");
 
 exports.blogpost_get = (req, res, next) => {
-  res.send("blog posts get");
+  res.render("posts");
 };
 
 exports.blogpost_post = (req, res, next) => {
@@ -23,4 +23,8 @@ exports.blogpost_put = (req, res, next) => {
 };
 exports.blogpost_delete = (req, res, next) => {
   res.send("blog posts delete");
+};
+
+exports.blogpost_detail_get = (req, res, next) => {
+  res.render("postDetail", { title: req.params.id });
 };

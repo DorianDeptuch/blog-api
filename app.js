@@ -12,7 +12,7 @@ mongoose
   .then(() => console.log("mongodb connected"))
   .catch((err) => console.log(err));
 
-var indexRouter = require("./routes/index");
+var indexRouter = require("./routes");
 var postsRouter = require("./routes/posts");
 
 var app = express();
