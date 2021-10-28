@@ -1,33 +1,29 @@
 <%- include('./partials/head') %>
 <%- include('./partials/header') %>
-<div class="jumbotron jumbotron-fluid mt-5">
-  <img class="img-fluid" src="https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="banner img">
-  <div class="container my-5">
-    <section class="row">
+<div class="jumbotron jumbotron-fluid" >
+  <img class="img-fluid" style="clip-path: polygon(0% 0%, 100% 0%, 100% 60%, 0% 60%);" src="https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="banner img">
+  <div class="container mb-5" style="margin-top: -10rem;">
+    <section class="row d-flex justify-content-center">
       <h1 class="text-center py-2">Recent Blog Posts</h1>
-      <div class="card col mx-2 p-0 shadow" style="width: 18rem;">
-        <img src="https://ychef.files.bbci.co.uk/976x549/p07n19vr.jpg" class="card-img-top" alt="Card img">
-        <div class="card-body">
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <button class="btn btn-primary">Read More >></button>
+      <% if (message?.length > 0){ %>
+        <div class="alert alert-success d-flex justify-content-between" role="alert">
+          <%= message %>
+          <button type="button" class="btn-close" aria-label="Close"></button>
         </div>
-      </div>
-      <div class="card col mx-2 p-0 shadow" style="width: 18rem;">
-        <img src="https://ychef.files.bbci.co.uk/976x549/p07n19vr.jpg" class="card-img-top" alt="Card img">
-        <div class="card-body">
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <button class="btn btn-primary">Read More >></button>
-
-        </div>
-      </div>
-      <div class="card col mx-2 p-0 shadow" style="width: 18rem;">
-        <img src="https://ychef.files.bbci.co.uk/976x549/p07n19vr.jpg" class="card-img-top" alt="Card img">
-        <div class="card-body">
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <button class="btn btn-primary">Read More >></button>
-        </div>
-      </div>
-      <div class="">
+      <%}%>
+      <% if (post_list.length > 0){%>
+        <% post_list.forEach(post => { %>
+          <div class="card col-lg col-md col-sm-4 m-3 p-0 shadow-lg" style="width: 18rem;">
+            <img src="<%= post.image %>" class="card-img-top" alt="Card img">
+            <div class="card-body">
+              <h3 class="card-text"><%= post.title %></h3>
+              <button class="btn btn-primary">Read More >></button>
+            </div>
+          </div>
+        <%})%>
+      <%}%>
+      
+      <div class="py-2">
         <a class="text-center py-2 mb-5" href="/posts">See all posts >></a>
       </div>
     </section>

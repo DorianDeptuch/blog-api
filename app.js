@@ -6,6 +6,7 @@ var logger = require("morgan");
 require("dotenv").config();
 const mongoose = require("mongoose");
 const db = process.env.MONGODB_URI;
+const methodOverride = require("method-override");
 
 mongoose
   .connect(db, { useNewUrlParser: true })
@@ -23,9 +24,10 @@ app.set("view engine", "ejs");
 
 app.use(logger("dev"));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+app.use(methodOverride("_method"));
 
 app.use("/", indexRouter);
 app.use("/posts", postsRouter);

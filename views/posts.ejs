@@ -1,8 +1,73 @@
 <%- include('./partials/head') %>
 <%- include('./partials/header') %>
 
-    <div class="container mt-5">
-      <h1>posts page</h1>
-    </div>
+    <div class="container" style="margin-top: 7rem;">
+        <section class="d-flex flex-column justify-content-center">
+          <h1 class="text-center py-2">Posts</h1>
+          <% if (post_list.length > 0){ %>
+            <% post_list.forEach(post => { %>
+              <div class="card d-flex flex-row row m-3 p-0 shadow-lg">
+                <img src="<%= post.image %>" class="card-img-left col-4 px-0" alt="Card img">
+                <div class="card-body col-8" style="position: relative">
+                  <h3 class="card-text"><%= post.title %></h3>
+                  <div class="card-subtitle text-muted">
+                    <h6>By <%= post.author %> on <%= post.dateFormatted %></h6>
+                  </div>
+                  <a href="<%= post.url %>" style="position: absolute; bottom: 10%;"><button class="btn btn-primary">Read More >></button></a>
+                </div>
+              </div>
+            <% }) %>
+          <%}%>
+          <div class="card d-flex flex-row row m-3 p-0 shadow-lg">
+            <img src="https://ychef.files.bbci.co.uk/976x549/p07n19vr.jpg" class="card-img-left col-4 px-0" alt="Card img">
+            <div class="card-body col-8">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <button class="btn btn-primary">Read More >></button>
+            </div>
+          </div>
+          <div class="card d-flex flex-row row m-3 p-0 shadow-lg">
+            <img src="https://ychef.files.bbci.co.uk/976x549/p07n19vr.jpg" class="card-img-left col-4 px-0" alt="Card img">
+            <div class="card-body col-8">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <button class="btn btn-primary">Read More >></button>
+            </div>
+          </div>
+          <div class="card d-flex flex-row row m-3 p-0 shadow-lg">
+            <img src="https://ychef.files.bbci.co.uk/976x549/p07n19vr.jpg" class="card-img-left col-4 px-0" alt="Card img">
+            <div class="card-body col-8">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <button class="btn btn-primary">Read More >></button>
+            </div>
+          </div>
+          <div class="card d-flex flex-row row m-3 p-0 shadow-lg">
+            <img src="https://ychef.files.bbci.co.uk/976x549/p07n19vr.jpg" class="card-img-left col-4 px-0" alt="Card img">
+            <div class="card-body col-8">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <button class="btn btn-primary">Read More >></button>
+            </div>
+          </div>
+          <div class="card d-flex flex-row row m-3 p-0 shadow-lg">
+            <img src="https://ychef.files.bbci.co.uk/976x549/p07n19vr.jpg" class="card-img-left col-4 px-0" alt="Card img">
+            <div class="card-body col-8">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <button class="btn btn-primary">Read More >></button>
+            </div>
+          </div>
+          <!-- <div class="card col-12 m-3 p-0 shadow-lg" style="width: 18rem;">
+            <img src="https://ychef.files.bbci.co.uk/976x549/p07n19vr.jpg" class="card-img-top" alt="Card img">
+            <div class="card-body">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <button class="btn btn-primary">Read More >></button>
+            </div>
+          </div> -->
+          <!-- <div class="card col-12 m-3 p-0 shadow-lg" style="width: 18rem;">
+            <img src="https://ychef.files.bbci.co.uk/976x549/p07n19vr.jpg" class="card-img-top" alt="Card img">
+            <div class="card-body">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <button class="btn btn-primary">Read More >></button>
+            </div>
+          </div> -->
+        </section>
+      </div>
 <%- include('./partials/footer') %>
   

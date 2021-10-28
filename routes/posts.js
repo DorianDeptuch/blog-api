@@ -12,4 +12,6 @@ router.delete("/", postController.blogpost_delete);
 
 router.get("/:id", postController.blogpost_detail_get);
 
+router.put("/:id", postController.blogpost_detail_put);
+
 module.exports = router;
