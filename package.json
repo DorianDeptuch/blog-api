@@ -5,9 +5,11 @@
   "scripts": {
     "start": "node ./bin/www",
     "server": "DEBUG=blog-api:* npm start",
-    "devstart": "DEBUG=blog-api:* nodemon start"
+    "devstart": "DEBUG=blog-api:* nodemon start",
+    "debugger": "node --inspect-brk ./bin/www"
   },
   "dependencies": {
+    "async": "^3.2.2",
     "cookie-parser": "~1.4.4",
     "date-fns": "^2.25.0",
     "debug": "~2.6.9",

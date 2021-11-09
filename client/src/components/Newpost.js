@@ -1,0 +1,42 @@
+import React from "react";
+// import Button from 'react-bootstrap/Button';
+import "bootstrap/dist/css/bootstrap.min.css";
+
+function Newpost() {
+  return (
+    <div
+      className="card rounded shadow p-5"
+      style={{ margin: "10rem 10rem 5rem 10rem" }}
+    >
+      <h1 className="text-center card-title">New Post</h1>
+      <form className="row g-3 card-body">
+        <div className="col-md-12">
+          <label htmlFor="inputPostTitle" className="form-label">
+            Post Title
+          </label>
+          <input type="text" className="form-control" id="inputPostTitle" />
+        </div>
+        <div className="col-md-12">
+          <label htmlFor="inputPostImageURL" className="form-label">
+            Post Image URL
+          </label>
+          <input type="text" className="form-control" id="inputPostImageURL" />
+        </div>
+        <div className="col-md-12">
+          <label htmlFor="inputPostContent" className="form-label">
+            Post Content
+          </label>
+          <textarea className="form-control" id="inputPostContent"></textarea>
+        </div>
+
+        <div className="col-12">
+          <button type="submit" className="btn btn-primary">
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+}
+
+export default Newpost;

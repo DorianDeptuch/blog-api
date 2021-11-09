@@ -1,7 +1,9 @@
-// const { body, validationResult } = require("express-validator");
+const { body, validationResult } = require("express-validator");
 const db = process.env.MONGO_URI;
 const Post = require("../models/post");
+const UserComment = require("../models/userComment");
 const { format } = require("date-fns");
+const async = require("async");
 
 exports.blogpost_get = (req, res, next) => {
   Post.find({}, "title date image author")
@@ -48,6 +50,8 @@ exports.blogpost_post = (req, res, next) => {
   //     },
   //   ],
   // });
+
+  //ADD VALIDATION AND MULTER
   const newPost = new Post({
     title: req.body.title,
     content: req.body.content,
@@ -76,6 +80,9 @@ exports.blogpost_detail_get = (req, res, next) => {
   Post.findById(req.params.id)
     .populate("title")
     .exec(function (err, results) {
+      if (err) {
+        return next(err);
+      }
       const {
         title,
         content,
@@ -83,76 +90,50 @@ exports.blogpost_detail_get = (req, res, next) => {
         published,
         image,
         author,
-        comments,
+        // comments,
         dateFormatted,
         id,
       } = results;
-      if (err) {
-        return next(err);
-      }
-      // console.log(results);
-      res.render(
-        "postDetail",
-        // { title: req.params.id }
-        {
-          title,
-          content,
-          date,
-          published,
-          image,
-          author,
-          comments,
-          dateFormatted,
-          id,
-        }
-      );
+      UserComment.find({ postid: req.params.id })
+        .populate("username")
+        .populate("message")
+        .populate("date")
+        .exec(function (err, commentResults) {
+          if (err) {
+            return next(err);
+          }
+          res.render("postDetail", {
+            title,
+            content,
+            date,
+            published,
+            image,
+            author,
+            comments: commentResults,
+            dateFormatted,
+            id,
+          });
+        });
     });
 };
 
-exports.blogpost_detail_put = (req, res, next) => {
-  // const newComment = {
-  //   user: req.body.comment_user,
-  //   content: req.body.comment_content,
-  //   date: format(new Date(), "PPpp"),
-  // };
-
-  req.post = new Post();
-  let post = req.post;
-
-  post.title = req.params.title;
-  post.content = req.params.content;
-  post.date = req.params.date;
-  post.published = false;
-  post.image = req.params.image;
-  post.author = req.params.author;
-  post.comments.user = req.body.comment_user;
-  post.comments.content = req.body.comment_content;
-  post.comments.date = format(new Date(), "PPpp");
-  post.dateFormatted = req.params.dateFormatted;
-  // post.id = req.params.id;
-
-  // const updatedPost = new Post({
-  //   title: req.params.title,
-  //   content: req.params.content,
-  //   date: req.params.date,
-  //   published: false,
-  //   image: req.params.image,
-  //   author: req.params.author,
-  //   comments: req.params.comments,
-  //   dateFormatted: req.params.dateFormatted,
-  //   _id: req.params.id,
-  // });
-
-  Post.findByIdAndUpdate(
-    req.params.id,
-    // updatedPost,
-    req.post,
-    {},
-    function (err, updated) {
-      if (err) {
-        return next(err);
-      }
-      res.redirect(updated.url);
+exports.blogpost_detail_post = (req, res, next) => {
+  const currentPost = Post.findById(req.params.id).exec(function (
+    err,
+    results
+  ) {
+    if (err) {
+      return next(err);
     }
-  );
+    //ADD VALIDATION
+    const newComment = new UserComment({
+      username: req.body.comment_user,
+      message: req.body.comment_content,
+      date: format(new Date(), "PPpp"),
+      postid: req.params.id,
+    });
+    newComment.save();
+
+    res.redirect("/posts/" + req.params.id);
+  });
 };

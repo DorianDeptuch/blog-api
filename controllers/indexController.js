@@ -19,6 +19,22 @@ exports.index_get = (req, res, next) => {
     });
 };
 
+exports.api_get = (req, res, next) => {
+  Post.find({}, "title date image author published")
+    .limit(3)
+    .sort({ date: "desc" })
+    .exec(function (err, list_of_posts) {
+      if (err) {
+        return next(err);
+      }
+      res.json({
+        // title: "Home",
+        // message: false,
+        post_list: list_of_posts,
+      });
+    });
+};
+
 exports.about_get = (req, res, next) => {
   // let { formatRelative, format, subDays, formatDistance } = datefns;
   // let date = new Date();

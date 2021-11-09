@@ -15,6 +15,7 @@ mongoose
 
 var indexRouter = require("./routes");
 var postsRouter = require("./routes/posts");
+var apiRouter = require("./routes/apiRouter");
 
 var app = express();
 
@@ -31,6 +32,7 @@ app.use(methodOverride("_method"));
 
 app.use("/", indexRouter);
 app.use("/posts", postsRouter);
+app.use("/api", apiRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
