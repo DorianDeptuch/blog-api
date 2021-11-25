@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 // import Button from 'react-bootstrap/Button';
 import "bootstrap/dist/css/bootstrap.min.css";
+import { CloseButton } from "react-bootstrap";
 
 function Newpost() {
   return (
@@ -8,6 +9,11 @@ function Newpost() {
       className="card rounded shadow p-5"
       style={{ margin: "10rem 10rem 5rem 10rem" }}
     >
+      <CloseButton
+        // onClick={setShowNewPost(false)}
+        style={{ position: "absolute", top: 0, right: 0, padding: "1rem" }}
+      />
+
       <h1 className="text-center card-title">New Post</h1>
       <form className="row g-3 card-body">
         <div className="col-md-12">

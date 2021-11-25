@@ -10,11 +10,35 @@ exports.index_get = (req, res, next) => {
       if (err) {
         return next(err);
       }
-      res.render("index", {
-        title: "Home",
-        message: false,
+      // res.render("index", {
+      //   title: "Home",
+      //   message: false,
+      //   post_list: list_of_posts,
+      //   image,
+      // });
+      res.json({
         post_list: list_of_posts,
-        image,
+      });
+    });
+};
+
+exports.admin_get = (req, res, next) => {
+  Post.find({}, "title date image author")
+    .limit(3)
+    .sort({ date: "desc" })
+    .exec(function (err, list_of_posts) {
+      const { image } = list_of_posts;
+      if (err) {
+        return next(err);
+      }
+      // res.render("index", {
+      //   title: "Home",
+      //   message: false,
+      //   post_list: list_of_posts,
+      //   image,
+      // });
+      res.json({
+        post_list: list_of_posts,
       });
     });
 };

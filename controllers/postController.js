@@ -13,7 +13,8 @@ exports.blogpost_get = (req, res, next) => {
       if (err) {
         return next(err);
       }
-      res.render("posts", { title: "posts", post_list: list_of_posts, image });
+      // res.render("posts", { title: "posts", post_list: list_of_posts, image });
+      res.json({ post_list: list_of_posts });
     });
 };
 
@@ -102,16 +103,29 @@ exports.blogpost_detail_get = (req, res, next) => {
           if (err) {
             return next(err);
           }
-          res.render("postDetail", {
-            title,
-            content,
-            date,
-            published,
-            image,
-            author,
+          // res.render("postDetail", {
+          //   title,
+          //   content,
+          //   date,
+          //   published,
+          //   image,
+          //   author,
+          //   comments: commentResults,
+          //   dateFormatted,
+          //   id,
+          // });
+          res.json({
+            // title,
+            // content,
+            // date,
+            // published,
+            // image,
+            // author,
+            // comments: commentResults,
+            // dateFormatted,
+            // id,
+            results,
             comments: commentResults,
-            dateFormatted,
-            id,
           });
         });
     });

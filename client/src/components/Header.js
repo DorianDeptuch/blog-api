@@ -1,5 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { NavLink } from "react-router-dom";
 
 function Header() {
   return (
@@ -7,9 +8,9 @@ function Header() {
       <header className="mb-5">
         <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
           <div className="container-fluid">
-            <a className="navbar-brand" href="/">
+            <NavLink className="navbar-brand" to="/">
               Nature Blog
-            </a>
+            </NavLink>
             <button
               className="navbar-toggler"
               type="button"
@@ -23,23 +24,23 @@ function Header() {
             </button>
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div className="navbar-nav mx-auto">
-                <a className="nav-link" href="/posts">
+                <NavLink className="nav-link" to="/posts">
                   Blog
-                </a>
-                <a className="nav-link" href="/about">
+                </NavLink>
+                <NavLink className="nav-link" to="/about">
                   About
-                </a>
-                <a className="nav-link" href="/contact">
+                </NavLink>
+                <NavLink className="nav-link" to="/contact">
                   Contact
-                </a>
+                </NavLink>
               </div>
               <div className="navbar-nav mx-auto">
-                <a className="nav-link" href="/login">
+                <NavLink className="nav-link" to="/login">
                   Log In
-                </a>
-                <a className="nav-link" href="/logout">
+                </NavLink>
+                <NavLink className="nav-link" to="/logout">
                   Log Out
-                </a>
+                </NavLink>
               </div>
             </div>
           </div>

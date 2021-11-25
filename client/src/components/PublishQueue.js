@@ -32,7 +32,10 @@ function PublishQueue() {
       className="card shadow rounded p-5"
       style={{ margin: "5rem 10rem 10rem 10rem", position: "relative" }}
     >
-      <CloseButton style={{ position: "asbolute", top: 0, right: 0 }} />
+      <CloseButton
+        // onClick={setShowPublishQueue(false)}
+        style={{ position: "absolute", top: 0, right: 0 }}
+      />
       <Carousel>
         <h1 className="text-center">Posts to be Published:</h1>
         {siteContents.map((post, i) => {
@@ -45,9 +48,6 @@ function PublishQueue() {
               />
               <Carousel.Caption>
                 <h3 style={{ textShadow: "2px 2px black" }}>{post.title}</h3>
-                {/* <p style={{ textShadow: "1px 1px black" }}>
-                  Nulla vitae elit libero, a pharetra augue mollis interdum.
-                </p> */}
                 <div className="d-flex justify-content-center">
                   <a href={"/posts/" + post._id}>
                     <button className="btn btn-success rounded mx-1 shadow">

@@ -7,6 +7,8 @@ router.get("/", indexController.index_get);
 
 router.get("/api", indexController.api_get);
 
+router.get("/admin", indexController.admin_get);
+
 router.get("/about", indexController.about_get);
 
 router.get("/contact", indexController.contact_get);
