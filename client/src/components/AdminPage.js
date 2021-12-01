@@ -4,7 +4,7 @@ import PublishQueue from "./PublishQueue";
 import Loader from "./Loader";
 import { Link } from "react-router-dom";
 
-function Mainpage() {
+function AdminPage() {
   const [siteContents, setSiteContents] = useState([]);
   const [showNewPost, setShowNewPost] = useState(false);
   const [showPublishQueue, setShowPublishQueue] = useState(false);
@@ -13,7 +13,6 @@ function Mainpage() {
   useEffect(() => {
     fetch("/admin")
       .then((res) => res.json())
-      // .then((res) => console.log(res));
       .then((posts) => {
         for (const post of posts.post_list) {
           setSiteContents((prev) => [...prev, post]);
@@ -109,4 +108,4 @@ function Mainpage() {
   );
 }
 
-export default Mainpage;
+export default AdminPage;

@@ -101,7 +101,7 @@ function PostDetail() {
                     By <strong>{comment.username}</strong> on{" "}
                     {convertTime(comment.date)}
                   </h6>
-                  <p className="card-text">{comment.message}</p>
+                  <p className="card-text fs-4">{comment.message}</p>
                 </div>
               );
             })
