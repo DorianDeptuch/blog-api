@@ -59,7 +59,7 @@ function Posts() {
                   href={`/posts/${post._id}`}
                   style={{ position: "absolute", bottom: "10%" }}
                 >
-                  <button className="btn btn-primary">Read More</button>
+                  <button className="btn btn-primary">Read More >></button>
                 </a>
               </div>
             </div>

@@ -1,6 +1,6 @@
 const Post = require("../models/post");
 const jwt = require("jsonwebtoken");
-const Author = require("../models/author");
+// const Author = require("../models/author");
 // const datefns = require("date-fns");
 
 exports.index_get = (req, res, next) => {
@@ -33,15 +33,18 @@ exports.admin_get = (req, res, next) => {
       if (err) {
         return next(err);
       }
-      Author.findOne().exec(async function (err, authorData) {
-        if (err) {
-          return next(err);
-        }
-        res.json({
-          post_list: list_of_posts,
-          authorData: authorData,
-        });
+      res.json({
+        post_list: list_of_posts,
       });
+      // Author.findOne().exec(async function (err, authorData) {
+      //   if (err) {
+      //     return next(err);
+      //   }
+      //   res.json({
+      //     post_list: list_of_posts,
+      //     authorData: authorData,
+      //   });
+      // });
       // res.render("index", {
       //   title: "Home",
       //   message: false,
@@ -49,6 +52,19 @@ exports.admin_get = (req, res, next) => {
       //   image,
       // });
     });
+};
+
+exports.admin_post = (req, res, next) => {
+  const { inputPostTitle, inputPostImageURL, inputPostContent } = req.body;
+
+  const newPost = new Post({
+    title: inputPostTitle,
+    image: inputPostImageURL,
+    content: inputPostContent,
+    author: "Dor",
+  });
+  newPost.save();
+  res.redirect("/admin");
 };
 
 exports.api_get = (req, res, next) => {

@@ -10,6 +10,8 @@ router.get("/api", indexController.api_get);
 
 router.get("/admin", indexController.admin_get);
 
+router.post("/admin", indexController.admin_post);
+
 router.get("/about", indexController.about_get);
 
 router.get("/contact", indexController.contact_get);

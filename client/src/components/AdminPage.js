@@ -9,18 +9,16 @@ function AdminPage() {
   const [showNewPost, setShowNewPost] = useState(false);
   const [showPublishQueue, setShowPublishQueue] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [admin, setAdmin] = useState("");
+  // const [admin, setAdmin] = useState("");
 
   useEffect(() => {
     fetch("/admin")
       .then((res) => res.json())
-      // .then((res) => console.log(res));
       .then((items) => {
         for (const post of items.post_list) {
           setSiteContents((prev) => [...prev, post]);
         }
-        setAdmin(items.authorData.author);
-        // console.log(items);
+        // setAdmin(items.authorData.author);
         setIsLoading(!isLoading);
       })
       .catch((err) => {
@@ -47,7 +45,7 @@ function AdminPage() {
       <div className="container mb-5" style={{ marginTop: "-10rem" }}>
         <div className="pt-6 card rounded shadow bg-light">
           <h2 className="card-text mt-5">
-            Welcome to the Admin Panel, {admin}
+            Welcome to the Admin Panel, ~~PLACEHOLDER~~
           </h2>
           <div style={{ margin: "2rem 0" }}>
             <button
@@ -99,7 +97,9 @@ function AdminPage() {
                 ></img>
                 <div className="card-body">
                   <h3 className="card-text">{post.title}</h3>
-                  <button className="btn btn-primary">Read More >></button>
+                  <a href={`/posts/${post._id}`}>
+                    <button className="btn btn-primary">Read More >></button>
+                  </a>
                 </div>
               </div>
             );

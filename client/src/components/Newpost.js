@@ -15,24 +15,38 @@ function Newpost() {
       />
 
       <h1 className="text-center card-title">New Post</h1>
-      <form className="row g-3 card-body">
+      <form className="row g-3 card-body" action="" method="POST">
         <div className="col-md-12">
           <label htmlFor="inputPostTitle" className="form-label">
             Post Title
           </label>
-          <input type="text" className="form-control" id="inputPostTitle" />
+          <input
+            type="text"
+            className="form-control"
+            name="inputPostTitle"
+            id="inputPostTitle"
+          />
         </div>
         <div className="col-md-12">
           <label htmlFor="inputPostImageURL" className="form-label">
             Post Image URL
           </label>
-          <input type="text" className="form-control" id="inputPostImageURL" />
+          <input
+            type="text"
+            className="form-control"
+            name="inputPostImageURL"
+            id="inputPostImageURL"
+          />
         </div>
         <div className="col-md-12">
           <label htmlFor="inputPostContent" className="form-label">
             Post Content
           </label>
-          <textarea className="form-control" id="inputPostContent"></textarea>
+          <textarea
+            className="form-control"
+            name="inputPostContent"
+            id="inputPostContent"
+          ></textarea>
         </div>
 
         <div className="col-12">
