@@ -7,7 +7,7 @@ function Newpost() {
   return (
     <div
       className="card rounded shadow p-5"
-      style={{ margin: "10rem 10rem 5rem 10rem" }}
+      style={{ margin: "5rem 10rem 5rem 10rem" }}
     >
       <CloseButton
         // onClick={setShowNewPost(false)}

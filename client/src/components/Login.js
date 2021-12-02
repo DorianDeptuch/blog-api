@@ -7,18 +7,28 @@ function Login() {
       style={{ marginTop: "7rem" }}
     >
       <h1 className="text-center card-title">Log In</h1>
-      <form className="row g-3 card-body">
+      <form className="row g-3 card-body" action="" method="POST">
         <div className="col-md-12">
-          <label htmlFor="inputUsername4" className="form-label">
+          <label htmlFor="inputUsername" className="form-label">
             Username
           </label>
-          <input type="text" className="form-control" id="inputUsername4" />
+          <input
+            type="text"
+            className="form-control"
+            name="inputUsername"
+            id="inputUsername"
+          />
         </div>
         <div className="col-md-12">
-          <label htmlFor="inputPassword4" className="form-label">
+          <label htmlFor="inputPassword" className="form-label">
             Password
           </label>
-          <input type="password" className="form-control" id="inputPassword4" />
+          <input
+            type="password"
+            className="form-control"
+            name="inputPassword"
+            id="inputPassword"
+          />
         </div>
 
         <div className="col-12">

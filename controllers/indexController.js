@@ -1,4 +1,6 @@
 const Post = require("../models/post");
+const jwt = require("jsonwebtoken");
+const Author = require("../models/author");
 // const datefns = require("date-fns");
 
 exports.index_get = (req, res, next) => {
@@ -31,15 +33,21 @@ exports.admin_get = (req, res, next) => {
       if (err) {
         return next(err);
       }
+      Author.findOne().exec(async function (err, authorData) {
+        if (err) {
+          return next(err);
+        }
+        res.json({
+          post_list: list_of_posts,
+          authorData: authorData,
+        });
+      });
       // res.render("index", {
       //   title: "Home",
       //   message: false,
       //   post_list: list_of_posts,
       //   image,
       // });
-      res.json({
-        post_list: list_of_posts,
-      });
     });
 };
 
@@ -60,16 +68,6 @@ exports.api_get = (req, res, next) => {
 };
 
 exports.about_get = (req, res, next) => {
-  // let { formatRelative, format, subDays, formatDistance } = datefns;
-  // let date = new Date();
-  // // let fns = formatRelative(1535397423238, date); //today ay 10:03pm, 10/21/2018
-  // // let fns = formatDistance(1535397423238, date, { //less than a minute ago, about 3 years ago
-  // //   addSuffix: true,
-  // // });
-  // let fns = format(date, "PPpp");
-
-  // console.log(date);
-  // console.log(fns);
   res.render("about", { title: "About" });
 };
 
@@ -96,3 +94,16 @@ exports.login_post = (req, res, next) => {
 exports.logout_get = (req, res, next) => {
   res.redirect("/");
 };
+
+// function verifyToken(req, res, next) {
+//   const bearerHeader = req.headers["authorization"];
+
+//   if (typeof bearerHeader !== "undefined") {
+//     const bearer = bearerHeader.split(" ");
+//     const bearerToken = bearer[1];
+//     req.token = bearerToken;
+//     next();
+//   } else {
+//     res.sendStatus(403);
+//   }
+// }

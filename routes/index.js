@@ -20,4 +20,17 @@ router.post("/login", authorController.author_login_post);
 
 router.get("/logout", authorController.author_logout_get);
 
+function verifyToken(req, res, next) {
+  const bearerHeader = req.headers["authorization"];
+
+  if (typeof bearerHeader !== "undefined") {
+    const bearer = bearerHeader.split(" ");
+    const bearerToken = bearer[1];
+    req.token = bearerToken;
+    next();
+  } else {
+    res.sendStatus(403);
+  }
+}
+
 module.exports = router;

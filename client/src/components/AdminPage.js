@@ -9,14 +9,18 @@ function AdminPage() {
   const [showNewPost, setShowNewPost] = useState(false);
   const [showPublishQueue, setShowPublishQueue] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [admin, setAdmin] = useState("");
 
   useEffect(() => {
     fetch("/admin")
       .then((res) => res.json())
-      .then((posts) => {
-        for (const post of posts.post_list) {
+      // .then((res) => console.log(res));
+      .then((items) => {
+        for (const post of items.post_list) {
           setSiteContents((prev) => [...prev, post]);
         }
+        setAdmin(items.authorData.author);
+        // console.log(items);
         setIsLoading(!isLoading);
       })
       .catch((err) => {
@@ -41,7 +45,10 @@ function AdminPage() {
         alt="banner img"
       ></img>
       <div className="container mb-5" style={{ marginTop: "-10rem" }}>
-        <div className="pt-6">
+        <div className="pt-6 card rounded shadow bg-light">
+          <h2 className="card-text mt-5">
+            Welcome to the Admin Panel, {admin}
+          </h2>
           <div style={{ margin: "2rem 0" }}>
             <button
               style={{ margin: "0 1rem" }}
@@ -66,7 +73,7 @@ function AdminPage() {
           )}
         </div>
         <section className="row d-flex justify-content-center">
-          <h1 className="text-center py-2">Recent Blog Posts</h1>
+          <h1 className="text-center py-5">Recent Blog Posts</h1>
           {isLoading && (
             <div
               style={{

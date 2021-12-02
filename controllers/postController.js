@@ -9,7 +9,7 @@ exports.blogpost_get = (req, res, next) => {
   Post.find({}, "title date image author")
     .sort({ date: "desc" })
     .exec(function (err, list_of_posts) {
-      const { image } = list_of_posts;
+      // const { image } = list_of_posts;
       if (err) {
         return next(err);
       }

@@ -3,7 +3,7 @@ import React from "react";
 function Contact() {
   return (
     <div className="container mb-5" style={{ marginTop: "7rem" }}>
-      <div className="card rounded shadow p-5">
+      <div className="card rounded shadow p-5 bg-light">
         <h1 className="card-title text-center mt-5">Contact</h1>
         <div className="card-body">
           <ul style={{ listStyle: "none" }}>
