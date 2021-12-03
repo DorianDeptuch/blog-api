@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import Loader from "./Loader";
 
@@ -8,6 +8,7 @@ function PostDetail() {
   const [siteComments, setSiteComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { author, title, date, content, image } = siteContents;
+  // const contentRef = useRef()
 
   function convertTime(ISO8601) {
     let date = new Date(ISO8601);
@@ -53,7 +54,10 @@ function PostDetail() {
               By <strong>{author}</strong> on {convertTime(date)}
             </h6>
           </div>
-          <h3 className="text-center card-content">{content}</h3>
+          <h3
+            dangerouslySetInnerHTML={{ __html: content }}
+            className="text-center card-content fs-5"
+          ></h3>
         </div>
         <div className="card-body mt-5">
           <form

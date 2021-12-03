@@ -7,6 +7,7 @@ import { Editor } from "@tinymce/tinymce-react";
 function Newpost() {
   // const textarea = document.getElementById("inputPostContent");
   // textarea.setAttribute("name", "inputPostContent");
+
   function handleEditorChange(e) {
     console.log("Content was updated:", e.target.getContent());
   }
@@ -55,7 +56,7 @@ function Newpost() {
             id="inputPostContent"
           ></textarea> */}
           <Editor
-            name="inputPostContent"
+            textareaName="inputPostContent"
             id="inputPostContent"
             initialValue="<p>Type here...</p>"
             apiKey={process.env.REACT_APP_TINYMCE_API_KEY}

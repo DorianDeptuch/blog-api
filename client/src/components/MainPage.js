@@ -55,10 +55,7 @@ function MainPage() {
                 ></img>
                 <div className="card-body">
                   <h3 className="card-text">{post.title}</h3>
-                  <a
-                    href={`/posts/${post._id}`}
-                    // style={{ position: "absolute", bottom: "10%" }}
-                  >
+                  <a href={`/posts/${post._id}`}>
                     <button className="btn btn-primary">Read More >></button>
                   </a>
                 </div>
