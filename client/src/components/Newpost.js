@@ -1,9 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 // import Button from 'react-bootstrap/Button';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { CloseButton } from "react-bootstrap";
+import { Editor } from "@tinymce/tinymce-react";
 
 function Newpost() {
+  // const textarea = document.getElementById("inputPostContent");
+  // textarea.setAttribute("name", "inputPostContent");
+  function handleEditorChange(e) {
+    console.log("Content was updated:", e.target.getContent());
+  }
+  // console.log(process.env.REACT_APP_TINYMCE_API_KEY);
   return (
     <div
       className="card rounded shadow p-5"
@@ -42,11 +49,32 @@ function Newpost() {
           <label htmlFor="inputPostContent" className="form-label">
             Post Content
           </label>
-          <textarea
+          {/* <textarea
             className="form-control"
             name="inputPostContent"
             id="inputPostContent"
-          ></textarea>
+          ></textarea> */}
+          <Editor
+            name="inputPostContent"
+            id="inputPostContent"
+            initialValue="<p>Type here...</p>"
+            apiKey={process.env.REACT_APP_TINYMCE_API_KEY}
+            init={{
+              height: 300,
+              menubar: false,
+              plugins: [
+                "advlist autolink lists link image",
+                "charmap print preview anchor help",
+                "searchreplace visualblocks code",
+                "insertdatetime media table paste wordcount",
+              ],
+              toolbar:
+                "undo redo | formatselect | bold italic | \
+            alignleft aligncenter alignright | \
+            bullist numlist outdent indent | help",
+            }}
+            onChange={handleEditorChange}
+          />
         </div>
 
         <div className="col-12">
@@ -55,6 +83,25 @@ function Newpost() {
           </button>
         </div>
       </form>
+      {/* <Editor
+        initialValue="<p>Type here...</p>"
+        apiKey={process.env.REACT_APP_TINYMCE_API_KEY}
+        init={{
+          height: 500,
+          menubar: false,
+          plugins: [
+            "advlist autolink lists link image",
+            "charmap print preview anchor help",
+            "searchreplace visualblocks code",
+            "insertdatetime media table paste wordcount",
+          ],
+          toolbar:
+            "undo redo | formatselect | bold italic | \
+            alignleft aligncenter alignright | \
+            bullist numlist outdent indent | help",
+        }}
+        onChange={handleEditorChange}
+      /> */}
     </div>
   );
 }
