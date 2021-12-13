@@ -7,7 +7,7 @@ function MainPage() {
   const [siteContents, setSiteContents] = useState([]);
 
   useEffect(() => {
-    fetch("/admin")
+    fetch("/api")
       .then((res) => res.json())
       .then((posts) => {
         for (const post of posts.post_list) {

@@ -42,22 +42,22 @@ exports.admin_get = (req, res, next) => {
   });
 };
 
-exports.admin_get = (req, res, next) => {
-  // console.log(req.user); // from jwtstrategy - stack overflow
-  Post.find({}, "title date image author")
-    .limit(3)
-    .sort({ date: "desc" })
-    .exec(function (err, list_of_posts) {
-      const { image } = list_of_posts;
-      if (err) {
-        return next(err);
-      }
-      res.json({
-        post_list: list_of_posts,
-        user: req.user,
-      });
-    });
-};
+// exports.admin_get = (req, res, next) => {
+//   // console.log(req.user); // from jwtstrategy - stack overflow
+//   Post.find({}, "title date image author")
+//     .limit(3)
+//     .sort({ date: "desc" })
+//     .exec(function (err, list_of_posts) {
+//       const { image } = list_of_posts;
+//       if (err) {
+//         return next(err);
+//       }
+//       res.json({
+//         post_list: list_of_posts,
+//         user: req.user,
+//       });
+//     });
+// };
 
 exports.admin_post = [
   body("inputPostTitle", "Please enter a title")
@@ -122,8 +122,6 @@ exports.api_get = (req, res, next) => {
         return next(err);
       }
       res.json({
-        // title: "Home",
-        // message: false,
         post_list: list_of_posts,
       });
     });
