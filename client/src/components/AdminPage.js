@@ -14,6 +14,7 @@ function AdminPage() {
   useEffect(() => {
     fetch("/admin")
       .then((res) => res.json())
+      // .then((res) => console.log(res))
       .then((items) => {
         for (const post of items.post_list) {
           setSiteContents((prev) => [...prev, post]);

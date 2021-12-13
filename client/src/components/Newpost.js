@@ -84,25 +84,6 @@ function Newpost() {
           </button>
         </div>
       </form>
-      {/* <Editor
-        initialValue="<p>Type here...</p>"
-        apiKey={process.env.REACT_APP_TINYMCE_API_KEY}
-        init={{
-          height: 500,
-          menubar: false,
-          plugins: [
-            "advlist autolink lists link image",
-            "charmap print preview anchor help",
-            "searchreplace visualblocks code",
-            "insertdatetime media table paste wordcount",
-          ],
-          toolbar:
-            "undo redo | formatselect | bold italic | \
-            alignleft aligncenter alignright | \
-            bullist numlist outdent indent | help",
-        }}
-        onChange={handleEditorChange}
-      /> */}
     </div>
   );
 }

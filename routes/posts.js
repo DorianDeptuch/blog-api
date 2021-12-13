@@ -4,7 +4,7 @@ const postController = require("../controllers/postController");
 
 router.get("/", postController.blogpost_get);
 
-router.post("/", postController.blogpost_post);
+// router.post("/", postController.blogpost_post);
 
 router.put("/", postController.blogpost_put);
 

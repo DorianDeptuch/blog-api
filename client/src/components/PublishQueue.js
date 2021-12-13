@@ -21,10 +21,6 @@ function PublishQueue() {
       .catch((err) => {
         console.error(err);
       });
-
-    // return () => {
-
-    // }
   }, []);
 
   return (
