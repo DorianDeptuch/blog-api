@@ -5,6 +5,7 @@ const indexController = require("../controllers/indexController");
 const authorController = require("../controllers/authorController");
 require("../config/passportJWT")(passport);
 const verifyToken = require("../config/verifyToken");
+const checkAuth = require("../config/checkAuth");
 
 /* GET home page. */
 router.get("/", indexController.index_get);
@@ -13,8 +14,8 @@ router.get("/api", indexController.api_get);
 
 router.get(
   "/admin",
-  // test,
-  verifyToken,
+  // verifyToken,
+  // checkAuth,
   // passport.authenticate("jwt", { session: false }),
   indexController.admin_get
 );

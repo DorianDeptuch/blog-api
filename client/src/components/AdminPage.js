@@ -25,6 +25,11 @@ function AdminPage() {
       .catch((err) => {
         console.error(err);
       });
+
+    fetch("/login")
+      .then((res) => res.json())
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   }, []);
 
   function handleShowNewPost() {
@@ -88,6 +93,7 @@ function AdminPage() {
           {siteContents.map((post, i) => {
             return (
               <div
+                key={i}
                 className="card col-lg col-md col-sm-4 m-3 p-0 shadow-lg"
                 style={{ width: "18rem" }}
               >

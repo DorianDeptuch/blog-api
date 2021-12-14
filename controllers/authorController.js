@@ -30,12 +30,11 @@ exports.author_login_post = (req, res, next) => {
       });
       console.log(token);
       req.token = token;
-      req.headers["authorization"];
+      req.headers["authorization"] = "bearer " + token;
 
       res.setHeader("Authorization", `Bearer ${token}`);
-      res.redirect("/admin");
 
-      // return res.json({ user, token });
+      return res.json({ user, token });
     });
   })(req, res, next);
 
