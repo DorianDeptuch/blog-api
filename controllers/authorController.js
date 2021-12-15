@@ -29,12 +29,19 @@ exports.author_login_post = (req, res, next) => {
         expiresIn: "24h",
       });
       console.log(token);
+      // console.log(user); same as below
+      console.log(req.user);
       req.token = token;
+
       req.headers["authorization"] = "bearer " + token;
 
       res.setHeader("Authorization", `Bearer ${token}`);
-
-      return res.json({ user, token });
+      // return res.json({ user, token });
+      // next();
+      global.token = token;
+      global.user = user;
+      res.redirect("/admin");
+      // res.json({ user, token });
     });
   })(req, res, next);
 
@@ -105,8 +112,10 @@ exports.author_login_post = (req, res, next) => {
 // };
 
 exports.author_logout_get = (req, res, next) => {
-  res.clearCookie("token");
-  res.redirect("/");
+  global.token = "";
+  global.user = "";
+  req.logout();
+  res.redirect("/login");
 };
 
 // SIGNUP NEW AUTHOR INTO DB

@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { NavLink } from "react-router-dom";
 
 function Header() {
+  const [currentUser, setCurrentUser] = useState(null);
+
+  useEffect(() => {
+    fetch("/admin")
+      .then((res) => res.json())
+      .then((res) => setCurrentUser(res.user.user.author || global.user))
+      .catch((err) => console.log(err));
+  }, []);
   return (
     <div>
       <header className="mb-5">
@@ -35,12 +43,16 @@ function Header() {
                 </NavLink>
               </div>
               <div className="navbar-nav mx-auto">
-                <NavLink className="nav-link" to="/login">
-                  Log In
-                </NavLink>
-                <NavLink className="nav-link" to="/logout">
-                  Log Out
-                </NavLink>
+                {!currentUser && (
+                  <NavLink className="nav-link" to="/login">
+                    Log In
+                  </NavLink>
+                )}
+                {currentUser && (
+                  <NavLink className="nav-link" to="/logout">
+                    Log Out
+                  </NavLink>
+                )}
               </div>
             </div>
           </div>
