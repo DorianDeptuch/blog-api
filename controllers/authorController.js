@@ -112,8 +112,8 @@ exports.author_login_post = (req, res, next) => {
 // };
 
 exports.author_logout_get = (req, res, next) => {
-  global.token = "";
-  global.user = "";
+  global.token = null;
+  global.user = null;
   req.logout();
   res.redirect("/login");
 };
