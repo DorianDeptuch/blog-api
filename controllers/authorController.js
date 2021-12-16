@@ -22,22 +22,10 @@ exports.author_login_post = (req, res, next) => {
       if (err) {
         res.send(err);
       }
-
       // generate a signed son web token with the contents of user object and return it in the response
-
       const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {
         expiresIn: "24h",
       });
-      console.log(token);
-      // console.log(user); same as below
-      console.log(req.user);
-      req.token = token;
-
-      req.headers["authorization"] = "bearer " + token;
-
-      res.setHeader("Authorization", `Bearer ${token}`);
-      // return res.json({ user, token });
-      // next();
       global.token = token;
       global.user = user;
       res.redirect("/admin");
