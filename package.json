@@ -6,11 +6,15 @@
     "start": "node ./bin/www",
     "server": "DEBUG=blog-api:* npm start",
     "devstart": "DEBUG=blog-api:* nodemon start",
-    "debugger": "node --inspect-brk ./bin/www"
+    "debugger": "node --inspect-brk ./bin/www",
+    "client": "npm start --prefix client",
+    "serverstart": "nodemon app.js",
+    "dev": "concurrently \"npm run devstart\" \"npm run client\""
   },
   "dependencies": {
     "async": "^3.2.2",
     "bcryptjs": "^2.4.3",
+    "concurrently": "^6.5.1",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
     "date-fns": "^2.25.0",

@@ -4,7 +4,6 @@ function auth(req, res, next) {
   res.setHeader("Authorization", global.token);
   // const token = req.header("Authorization")
   const token = global.token;
-  console.log("token: ", token);
 
   if (!token) return res.status(401).json({ msg: "Not authorized" });
 
