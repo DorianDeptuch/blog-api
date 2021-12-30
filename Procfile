@@ -1,1 +1,1 @@
-web: node ./bin/www
+concurrently \"npm run devstart\" \"npm run client\"
