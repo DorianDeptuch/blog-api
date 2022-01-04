@@ -9,6 +9,7 @@ This project was done as part of [The Odin Project](https://www.theodinproject.c
 * HTML5
 * CSS3
 * JavaScript
+* React
 * Node.js
 * Express
 
