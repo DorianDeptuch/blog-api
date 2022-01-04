@@ -13,7 +13,7 @@
     "client": "npm start --prefix client",
     "serverstart": "nodemon app.js",
     "dev": "concurrently \"npm run devstart\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCITON=false npm install --prefix client && npm run build -- prefix client"
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "dependencies": {
     "async": "^3.2.2",

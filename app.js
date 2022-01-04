@@ -33,6 +33,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors());
 app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "client/build")));
 app.use(methodOverride("_method"));
 require("./config/passport")(passport);
 
